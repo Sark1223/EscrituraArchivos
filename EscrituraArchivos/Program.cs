@@ -11,31 +11,23 @@ namespace EscrituraArchivos
     {
         static void Main(string[] args)
         {
-            StreamWriter sw = new StreamWriter("escribir.txt");
-            //Si el archivo no existe lo crera
-            //Si el archivo existe escribira sobre el
-
-            string[] lineas =
-            {
-                "esto es una linea",
-                "esta es mi segunda linea",
-                "aquí quiero ver un corazón <3",
-                "me gusta el pan"
-            };
-
             Console.WriteLine("Escribiendo. . . \n");
+            
+            //escritura en archivo
+            StreamWriter sw = new StreamWriter("escribir.txt", true);
+            
+            //obtencion de datos 
+            Console.Write("Ingrese un nombre: ");
+            string name = Console.ReadLine();
 
-            //recorrer el arreglo para escribir las lineas en el archivo
-            foreach(string linea in lineas)
-            {
-                //escribir en el archivo
-                sw.WriteLine(linea);
-                Console.WriteLine(linea);
-            }
+            //escribirlo en el archivo "escribir"
+            sw.WriteLine(name);
 
+            //guardar cambios
             sw.Close();
+            Console.Clear();
 
-            Console.WriteLine("\nSe ha completado la escritura ☺");
+            Console.WriteLine("Se ha completado la escritura ☺");
             Console.ReadKey();
         }
     }
