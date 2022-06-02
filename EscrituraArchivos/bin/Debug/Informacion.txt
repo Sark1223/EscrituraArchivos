@@ -1,0 +1,7 @@
+FECHA: 01/06/2022 06:24:50 p. m.
+NOMBRE: Santos Rivera Karla Judith
+EDAD: 18 años
+PESO: 62 kg
+ESTATURA: 158
+IMC: 62
+
