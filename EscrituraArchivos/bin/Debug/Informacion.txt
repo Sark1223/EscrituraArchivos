@@ -1,7 +1,15 @@
-FECHA: 01/06/2022 06:24:50 p. m.
-NOMBRE: Santos Rivera Karla Judith
+
+FECHA: 02/06/2022 11:13:00 p. m.
+NOMBRE: Karla Judith Santos Rivera 
 EDAD: 18 años
 PESO: 62 kg
 ESTATURA: 158
-IMC: 62
+IMC: 24.83576
+
+FECHA: 02/06/2022 11:13:26 p. m.
+NOMBRE: Edwin Villada Dominguez
+EDAD: 22 años
+PESO: 73 kg
+ESTATURA: 173
+IMC: 24.39106
 
