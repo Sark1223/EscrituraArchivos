@@ -10,7 +10,7 @@ namespace EscrituraArchivos
     class Program
     {
         //creación de clase infoPersona
-        class infoPersona
+        class InfoPersona
         {
             public string nombre;
             public sbyte edad;
@@ -18,7 +18,7 @@ namespace EscrituraArchivos
             public byte estatura;
 
             //constructor de la clase 
-            public infoPersona(string nombre, sbyte edad, float peso, byte estatura)
+            public InfoPersona(string nombre, sbyte edad, float peso, byte estatura)
             {
                 this.nombre = nombre;
                 this.edad = edad;
@@ -26,7 +26,7 @@ namespace EscrituraArchivos
                 this.estatura = estatura;
             }
             
-            public DateTime fecha()
+            public DateTime Fecha()
             {
                 // Declaramos nuestra variable tipo fecha.
                 DateTime dtToday = DateTime.Now;
@@ -79,7 +79,7 @@ namespace EscrituraArchivos
                         estatura = byte.Parse(Console.ReadLine());
 
                         //creacion de objeto tipo infoPersona
-                        infoPersona Datos = new infoPersona(nombre, edad, peso, estatura);
+                        InfoPersona datos = new InfoPersona(nombre, edad, peso, estatura);
 
                         //escribirlo en el archivo "escribir"
                         sw.WriteLine("FECHA: {0}\n" +
@@ -88,7 +88,7 @@ namespace EscrituraArchivos
                              "PESO: {3} kg\n" +
                              "ESTATURA: {4}\n" +
                              "IMC: {5}\n",
-                             Datos.fecha(), Datos.nombre, Datos.edad, Datos.peso, Datos.estatura, Datos.MetodoIMC());
+                             datos.Fecha(), datos.nombre, datos.edad, datos.peso, datos.estatura, datos.MetodoIMC());
                         
                         Console.Clear();
                         
@@ -97,14 +97,18 @@ namespace EscrituraArchivos
                     //Revision de errores 
                     catch (OverflowException)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Has ingresado muchos caracteres");
+                        Console.ResetColor();
                         Console.WriteLine("Presione enter para continuar. . . ");
                         Console.ReadKey();
                         Console.Clear();
                     }
                     catch (FormatException)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Los datos no son del formato correcto");
+                        Console.ResetColor();
                         Console.WriteLine("Presione enter para continuar. . . ");
                         Console.ReadKey();
                         Console.Clear();
@@ -135,27 +139,33 @@ namespace EscrituraArchivos
                     Console.Clear();
 
                     //validacion de la respuesta que el ususario introdujo
-                    if (decision == "si" || decision == "Si" || decision == "sí" || decision == "Sí" || decision == "SÍ" || decision == "SI")
+                    //si ingresa sí lower
+                    if (decision.ToLower() == "si" || decision.ToLower() == "sí" /*ToLowe hace que la cadena se haga minuscula para comparar*/)
                     {
                         Console.WriteLine("Escribiendo. . . \n");
+                        //significa que quiere seguir agregando datos, por lo tanto no quiere cerrar el programa
                         cerrar = false;
                     }
-                    else if (decision == "no" || decision == "NO" || decision == "No")
+                    else if (decision.ToLower() == "no")
                     {
+                        //Si dice que no quiere agregar mas datos, cerrar es igual a verdadero
                         cerrar = true;
                     }
                     else
                     {
                         Console.WriteLine("Favor de ingresar solo una de las 2 opciones dadas.");
+                        //desicion sera igual a error para que el siclo continue pidiendo respuesta
                         decision = "error";
                     }
 
-                } while (decision == "error");
+                } while (decision == "error");// mientras la decision este equivocada
 
-            } while (cerrar == false);
+            } while (cerrar == false);// mientras el usuario no se quiera salir
+            
+            sw.Close();//cuando un archivo se cierra se guarda
+
             Console.WriteLine("Se ha completado la escritura ☺\n");
             Console.WriteLine("Presione enter para finalizar. . .");
-            sw.Close();
             Console.ReadKey();
         }
     }
